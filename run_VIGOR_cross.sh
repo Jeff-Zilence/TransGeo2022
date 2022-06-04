@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+python -u train.py --lr 0.00005 --batch-size 16 --dist-url 'tcp://localhost:10001' --multiprocessing-distributed --world-size 1 --rank 0  --epochs 50 --save_path ./result_vigor_cross --op sam --wd 0.03 --mining --dataset vigor --cos --dim 1000 --asam --rho 2.5 --cross
+python -u train.py --lr 0.000005 --batch-size 16 --dist-url 'tcp://localhost:10001' --multiprocessing-distributed --world-size 1 --rank 0  --epochs 50 --resume ./result_vigor_cross/checkpoint.pth.tar --save_path ./result_vigor_cross --op sam --wd 0.03 --mining --dataset vigor --cos --dim 1000 --asam --rho 2.5 --sat_res 400 --crop --cross
