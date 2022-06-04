@@ -24,7 +24,7 @@ Please prepare [VIGOR](https://github.com/Jeff-Zilence/VIGOR), [CVUSA](http://mv
 
 ## Requirement
 	- Python >= 3.6, numpy, matplotlib, pillow, ptflops, timm
-    - PyTorch >= 1.8.1
+    - PyTorch >= 1.8.1, torchvision >= 0.11.1
 	
 ## Training and Evaluation
 Simply run the scripts like:
@@ -45,5 +45,5 @@ You can find the pretrained models [here](https://drive.google.com/drive/folders
     - https://github.com/facebookresearch/deit
     - https://github.com/facebookresearch/moco
     - https://github.com/davda54/sam
-	- https://github.com/david-husx/crossview_localisation.git
+    - https://github.com/david-husx/crossview_localisation.git
 
