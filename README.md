@@ -1,23 +1,17 @@
 # TransGeo2022
-This repository provides the code for "[TransGeo: Transformer Is All You Need for Cross-view Image Geo-localization]()".
+This repository provides the code for "[TransGeo: Transformer Is All You Need for Cross-view Image Geo-localization](https://openaccess.thecvf.com/content/CVPR2022/html/Zhu_TransGeo_Transformer_Is_All_You_Need_for_Cross-View_Image_Geo-Localization_CVPR_2022_paper.html)".
 
 <img width=519 height=300 src="data/Overview.png"/>
 
-[//]: # (```bash)
-
-[//]: # (@inproceedings{zhu2022transgeo,)
-
-[//]: # (  title={TransGeo: Transformer Is All You Need for Cross-view Image Geo-localization},)
-
-[//]: # (  author={Zhu, Sijie and Shah, Mubarak and Chen, Chen},)
-
-[//]: # (  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},)
-
-[//]: # (  year={2022})
-
-[//]: # (})
-
-[//]: # (```)
+```
+@inproceedings{zhu2022transgeo,
+  title={TransGeo: Transformer Is All You Need for Cross-view Image Geo-localization},
+  author={Zhu, Sijie and Shah, Mubarak and Chen, Chen},
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+  pages={1162--1171},
+  year={2022}
+}
+```
 
 ## Dataset
 Please prepare [VIGOR](https://github.com/Jeff-Zilence/VIGOR), [CVUSA](http://mvrl.cs.uky.edu/datasets/cvusa/) or [CVACT](https://github.com/Liumouliu/OriCNN). You may need to modify specific path in dataloader.
