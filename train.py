@@ -543,9 +543,6 @@ def validate(val_query_loader, val_reference_loader, model, args):
 
             reference_features[indexes.cpu().numpy().astype(int), :] = reference_embed.detach().cpu().numpy()
 
-            if i == 0 or i == (len(val_reference_loader) - 1):
-                print(indexes.shape, indexes)
-
             # measure elapsed time
             batch_time.update(time.time() - end)
             end = time.time()
@@ -567,8 +564,6 @@ def validate(val_query_loader, val_reference_loader, model, args):
 
             query_features[indexes.cpu().numpy(), :] = query_embed.cpu().numpy()
             query_labels[indexes.cpu().numpy()] = labels.cpu().numpy()
-            if i == 0 or i == (len(val_query_loader)-1):
-                print(indexes.shape, indexes)
 
             # measure elapsed time
             batch_time.update(time.time() - end)
