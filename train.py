@@ -317,6 +317,7 @@ def main_worker(gpu, ngpus_per_node, args):
         mining_sampler = DistributedMiningSampler
 
     train_dataset = dataset(mode='train', print_bool=True, same_area=(not args.cross),args=args)
+    train_scan_dataset = dataset(mode='scan_train' if args.dataset == 'vigor' else 'train', print_bool=True, same_area=(not args.cross), args=args)
     val_scan_dataset = dataset(mode='scan_val', same_area=(not args.cross), args=args)
     val_query_dataset = dataset(mode='test_query', same_area=(not args.cross), args=args)
     val_reference_dataset = dataset(mode='test_reference', same_area=(not args.cross), args=args)
@@ -337,7 +338,7 @@ def main_worker(gpu, ngpus_per_node, args):
 
     train_scan_loader = torch.utils.data.DataLoader(
         train_dataset, batch_size=args.batch_size, shuffle=False,
-        num_workers=args.workers, pin_memory=True,sampler=torch.utils.data.distributed.DistributedSampler(train_dataset), drop_last=False)
+        num_workers=args.workers, pin_memory=True,sampler=torch.utils.data.distributed.DistributedSampler(train_scan_dataset), drop_last=False)
 
     val_scan_loader = torch.utils.data.DataLoader(
         val_scan_dataset, batch_size=args.batch_size, shuffle=False,

@@ -208,7 +208,13 @@ class VIGOR(torch.utils.data.Dataset):
 
     def __getitem__(self, index, debug=False):
         if 'train' in self.mode:
-            idx = random.choice(self.train_sat_cover_dict[self.train_sat_cover_list[index%len(self.train_sat_cover_list)]])
+            if 'scan' in self.mode:
+                # replace random sample with deterministic sample if it is to scan all the samples
+                ll = len(self.train_sat_cover_dict[self.train_sat_cover_list[index % len(self.train_sat_cover_list)]])
+                assert ll <= 2
+                idx = self.train_sat_cover_dict[self.train_sat_cover_list[index%len(self.train_sat_cover_list)]][(index//len(self.train_sat_cover_list))%ll]
+            else:
+                idx = random.choice(self.train_sat_cover_dict[self.train_sat_cover_list[index%len(self.train_sat_cover_list)]])
             img_query = Image.open(self.train_list[idx])
             img_reference = Image.open(self.train_sat_list[self.train_label[idx][0]]).convert('RGB')
 

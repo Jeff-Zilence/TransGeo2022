@@ -112,7 +112,7 @@ class CVUSA(torch.utils.data.Dataset):
             print('CVUSA: load', self.test_list, ' data_size =', self.test_data_size)
 
     def __getitem__(self, index, debug=False):
-        if self.mode== 'train':
+        if self.mode == 'train':
             idx = index % len(self.id_idx_list)
             img_query = Image.open(self.root + self.id_list[idx][1]).convert('RGB')
             img_reference = Image.open(self.root + self.id_list[idx][0]).convert('RGB')
