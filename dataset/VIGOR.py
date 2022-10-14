@@ -223,7 +223,7 @@ class VIGOR(torch.utils.data.Dataset):
             if self.args.crop:
                 atten_sat = Image.open(os.path.join(self.args.resume.replace(self.args.resume.split('/')[-1],''),'attention','train', str(idx)+'.png')).convert('RGB')
                 return img_query, img_reference, torch.tensor(idx), torch.tensor(idx), torch.tensor(self.train_delta[idx, 0]), self.to_tensor(atten_sat)
-            return img_query, img_reference, torch.tensor(idx), torch.tensor(idx), torch.tensor(self.train_delta[idx, 0]), 0
+            return img_query, img_reference, torch.tensor(idx), torch.tensor(self.train_label[idx][0]), torch.tensor(self.train_delta[idx, 0]), 0
         elif 'scan_val' in self.mode:
             img_reference = Image.open(self.test_sat_list[index]).convert('RGB')
             img_reference = self.transform_reference(img_reference)
