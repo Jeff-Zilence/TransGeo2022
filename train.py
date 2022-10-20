@@ -337,8 +337,8 @@ def main_worker(gpu, ngpus_per_node, args):
         num_workers=args.workers, pin_memory=True, sampler=train_sampler, drop_last=True)
 
     train_scan_loader = torch.utils.data.DataLoader(
-        train_dataset, batch_size=args.batch_size, shuffle=False,
-        num_workers=args.workers, pin_memory=True,sampler=torch.utils.data.distributed.DistributedSampler(train_scan_dataset), drop_last=False)
+        train_scan_dataset, batch_size=args.batch_size, shuffle=False,
+        num_workers=args.workers, pin_memory=True, sampler=torch.utils.data.distributed.DistributedSampler(train_scan_dataset), drop_last=False)
 
     val_scan_loader = torch.utils.data.DataLoader(
         val_scan_dataset, batch_size=args.batch_size, shuffle=False,
