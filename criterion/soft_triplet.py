@@ -23,7 +23,7 @@ class SoftTripletBiLoss(nn.Module):
         sim_mat = torch.matmul(normalized_inputs_q, normalized_inputs_k.t())
 
         # split the positive and negative pairs
-        eyes_ = torch.eye(n).cuda()
+        eyes_ = torch.eye(n)
 
         pos_mask = eyes_.eq(1)
         neg_mask = ~pos_mask

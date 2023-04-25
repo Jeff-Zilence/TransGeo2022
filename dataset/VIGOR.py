@@ -78,11 +78,11 @@ class VIGOR(torch.utils.data.Dataset):
         label_root = 'splits'
 
         if same_area:
-            self.train_city_list = ['NewYork', 'Seattle', 'SanFrancisco', 'Chicago']
-            self.test_city_list = ['NewYork', 'Seattle', 'SanFrancisco', 'Chicago']
+            self.train_city_list = ['NewYork', 'SanFrancisco', 'Chicago']
+            self.test_city_list = ['NewYork', 'SanFrancisco', 'Chicago']
         else:
-            self.train_city_list = ['NewYork', 'Seattle']
-            self.test_city_list = ['SanFrancisco', 'Chicago']
+            self.train_city_list = ['NewYork', 'SanFrancisco']
+            self.test_city_list = ['Chicago']
 
         self.train_sat_list = []
         self.train_sat_index_dict = {}
@@ -136,7 +136,7 @@ class VIGOR(torch.utils.data.Dataset):
                     label = []
                     for i in [1, 4, 7, 10]:
                         label.append(self.train_sat_index_dict[data[i]])
-                    label = np.array(label).astype(np.int)
+                    label = np.array(label).astype(int)
                     delta = np.array([data[2:4], data[5:7], data[8:10], data[11:13]]).astype(float)
                     self.train_list.append(os.path.join(self.root, city, 'panorama', data[0]))
                     self.train_label.append(label)
@@ -170,7 +170,7 @@ class VIGOR(torch.utils.data.Dataset):
                     label = []
                     for i in [1, 4, 7, 10]:
                         label.append(self.test_sat_index_dict[data[i]])
-                    label = np.array(label).astype(np.int)
+                    label = np.array(label).astype(int)
                     delta = np.array([data[2:4], data[5:7], data[8:10], data[11:13]]).astype(float)
                     self.test_list.append(os.path.join(self.root, city, 'panorama', data[0]))
                     self.test_label.append(label)

@@ -240,7 +240,7 @@ def main_worker(gpu, ngpus_per_node, args):
         model = model.cuda(args.gpu)
     else:
         # DataParallel will divide and allocate batch_size to all available GPUs
-        model = torch.nn.DataParallel(model).cuda()
+        pass
 
     parameters = list(filter(lambda p: p.requires_grad, model.parameters()))
     for name, param in model.named_parameters():
@@ -316,11 +316,11 @@ def main_worker(gpu, ngpus_per_node, args):
         dataset = CVACT
         mining_sampler = DistributedMiningSampler
 
-    train_dataset = dataset(mode='train', print_bool=True, same_area=(not args.cross),args=args)
-    train_scan_dataset = dataset(mode='scan_train' if args.dataset == 'vigor' else 'train', print_bool=True, same_area=(not args.cross), args=args)
-    val_scan_dataset = dataset(mode='scan_val', same_area=(not args.cross), args=args)
-    val_query_dataset = dataset(mode='test_query', same_area=(not args.cross), args=args)
-    val_reference_dataset = dataset(mode='test_reference', same_area=(not args.cross), args=args)
+    train_dataset = dataset(mode='train', print_bool=True, same_area=(not args.cross),args=args,root="data/VIGOR")
+    train_scan_dataset = dataset(mode='scan_train' if args.dataset == 'vigor' else 'train', print_bool=True, same_area=(not args.cross), args=args, root="data/VIGOR")
+    val_scan_dataset = dataset(mode='scan_val', same_area=(not args.cross), args=args, root="data/VIGOR")
+    val_query_dataset = dataset(mode='test_query', same_area=(not args.cross), args=args, root="data/VIGOR")
+    val_reference_dataset = dataset(mode='test_reference', same_area=(not args.cross), args=args, root="data/VIGOR")
 
     if args.distributed:
         if args.mining:
@@ -338,12 +338,12 @@ def main_worker(gpu, ngpus_per_node, args):
 
     train_scan_loader = torch.utils.data.DataLoader(
         train_scan_dataset, batch_size=args.batch_size, shuffle=False,
-        num_workers=args.workers, pin_memory=True, sampler=torch.utils.data.distributed.DistributedSampler(train_scan_dataset), drop_last=False)
+        num_workers=args.workers, pin_memory=True, sampler=train_scan_dataset, drop_last=False)
 
     val_scan_loader = torch.utils.data.DataLoader(
         val_scan_dataset, batch_size=args.batch_size, shuffle=False,
         num_workers=args.workers, pin_memory=True,
-        sampler=torch.utils.data.distributed.DistributedSampler(val_scan_dataset), drop_last=False)
+        sampler=val_scan_dataset, drop_last=False)
 
     val_query_loader = torch.utils.data.DataLoader(
         val_query_dataset,batch_size=32, shuffle=False,
