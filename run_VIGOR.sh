@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
-python -u train.py --lr 0.00005 --batch-size 16 --dist-url 'tcp://localhost:10001' --world-size 1 --rank 0  --epochs 10 --save_path ./result_vigor --op sam --wd 0.03 --dataset vigor --cos --dim 1000 --asam --rho 2.5 --workers 8 --b 8
+python -u train.py --lr 0.00005 --batch-size 16 --dist-url 'tcp://localhost:10001' --world-size 1 --rank 0  --epochs 1 --save_path ./result_vigor --op sam --wd 0.03 --dataset vigor --cos --dim 1000 --asam --rho 2.5 --workers 8 --b 8
 # python -u train.py --lr 0.000005 --batch-size 16 --dist-url 'tcp://localhost:10001' --world-size 1 --rank 0  --epochs 50 --resume ./result_vigor/checkpoint.pth.tar --save_path ./result_vigor --op sam --wd 0.03 --mining --dataset vigor --cos --dim 1000 --asam --rho 2.5 --sat_res 400 --crop
