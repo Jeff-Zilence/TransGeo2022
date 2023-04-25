@@ -78,11 +78,11 @@ class VIGOR(torch.utils.data.Dataset):
         label_root = 'splits'
 
         if same_area:
-            self.train_city_list = ['NewYork', 'SanFrancisco', 'Chicago']
-            self.test_city_list = ['NewYork', 'SanFrancisco', 'Chicago']
+            self.train_city_list = ['NewYork', 'Seattle', 'SanFrancisco', 'Chicago']
+            self.test_city_list = ['NewYork', 'Seattle', 'SanFrancisco', 'Chicago']
         else:
-            self.train_city_list = ['NewYork', 'SanFrancisco']
-            self.test_city_list = ['Chicago']
+            self.train_city_list = ['NewYork', 'Seattle']
+            self.test_city_list = ['SanFrancisco', 'Chicago']
 
         self.train_sat_list = []
         self.train_sat_index_dict = {}
