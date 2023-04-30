@@ -316,11 +316,11 @@ def main_worker(gpu, ngpus_per_node, args):
         dataset = CVACT
         mining_sampler = DistributedMiningSampler
 
-    train_dataset = dataset(mode='train', print_bool=True, same_area=(not args.cross),args=args)
-    train_scan_dataset = dataset(mode='scan_train' if args.dataset == 'vigor' else 'train', print_bool=True, same_area=(not args.cross), args=args)
-    val_scan_dataset = dataset(mode='scan_val', same_area=(not args.cross), args=args)
-    val_query_dataset = dataset(mode='test_query', same_area=(not args.cross), args=args)
-    val_reference_dataset = dataset(mode='test_reference', same_area=(not args.cross), args=args)
+    train_dataset = dataset(mode='train', print_bool=True, same_area=(not args.cross), args=args, root="/dev/shm/VIGOR-SF")
+    train_scan_dataset = dataset(mode='scan_train' if args.dataset == 'vigor' else 'train', print_bool=True, same_area=(not args.cross), args=args, root="/dev/shm/VIGOR-SF")
+    val_scan_dataset = dataset(mode='scan_val', same_area=(not args.cross), args=args, root="/dev/shm/VIGOR-SF")
+    val_query_dataset = dataset(mode='test_query', same_area=(not args.cross), args=args, root="/dev/shm/VIGOR-SF")
+    val_reference_dataset = dataset(mode='test_reference', same_area=(not args.cross), args=args, root="/dev/shm/VIGOR-SF")
 
     if args.distributed:
         if args.mining:

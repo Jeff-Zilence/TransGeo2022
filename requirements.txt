@@ -1,0 +1,6 @@
+matplotlib
+ptflops
+scipy
+timm
+torch
+torchvision

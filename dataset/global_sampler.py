@@ -26,7 +26,7 @@ class DistributedMiningSampler(DistributedSampler[T_co]):
         self.queue_size = 1 # for computing moving average, not used in this implementation
         self.queue = np.zeros([self.queue_length, self.queue_size, self.dim, 2])
         self.queue_ptr = 0
-        self.queue_counter = np.zeros(self.queue_length,dtype=np.int)
+        self.queue_counter = np.zeros(self.queue_length,dtype=int)
         self.save_path = save_path
         self.mining_start = 1
         self.mining_pool_size = min(40000, self.queue_length)
@@ -146,7 +146,7 @@ class DistributedMiningSamplerVigor(DistributedSampler[T_co]):
         self.queue_size = 1 # for computing moving average, not used in this implementation
         self.queue = np.zeros([self.queue_length, self.queue_size, self.dim, 2])
         self.queue_ptr = 0
-        self.queue_counter = np.zeros(self.queue_length,dtype=np.int)
+        self.queue_counter = np.zeros(self.queue_length,dtype=int)
         self.save_path = save_path
         self.mining_start = 1
         self.mining_pool_size = min(40000, len(dataset.train_sat_cover_list))
